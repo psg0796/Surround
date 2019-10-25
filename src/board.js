@@ -14,8 +14,7 @@ export default class MainApp extends Component {
 
 	let data = this.state.data;
 	data[block.row][block.col].type = 1;
-	console.log(data[block.row][block.col]);
-	console.log(block);
+
 	this.setState({
 		data: data
 	});
