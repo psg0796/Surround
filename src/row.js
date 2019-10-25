@@ -7,10 +7,12 @@ export default class Row extends Component {
     return (
         <View style={styles.container}>
           {this.props.data.map((block,index) => <Block
-                index={block.index}
+				row={block.row}
+				col={block.col}
                 key={index}
                 type={block.type}
                 contentTypeList={this.props.contentTypeList}
+                onPress={this.props.onPress}
             />)}
         </View>
       );

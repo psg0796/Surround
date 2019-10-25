@@ -1,19 +1,33 @@
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { TouchableOpacity, StyleSheet, View } from 'react-native';
 
 export default class Row extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      index: this.props.index,
+	  row: this.props.row,
+	  col: this.props.col,
       type: this.props.type
     }
   }
 
+  componentWillReceiveProps = (nextProps) => {
+	  if(nextProps.type !== this.state.type) {
+		  this.setState({
+			  type: nextProps.type
+		  })
+	  }
+  }
+  onClick = () => {
+    this.props.onPress(this.state);
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        {this.props.contentTypeList[this.state.type]}
+      <View style={styles.container} onPress={this.onClick}>
+		  <TouchableOpacity onPress={this.onClick}>
+			  {this.props.contentTypeList[this.state.type]}
+		  </TouchableOpacity>
       </View>
     );
   }

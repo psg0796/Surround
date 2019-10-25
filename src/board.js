@@ -9,6 +9,18 @@ export default class MainApp extends Component {
       data: this.props.data
     }
   }
+
+  onPress = (block) => {
+
+	let data = this.state.data;
+	data[block.row][block.col].type = 1;
+	console.log(data[block.row][block.col]);
+	console.log(block);
+	this.setState({
+		data: data
+	});
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -16,6 +28,7 @@ export default class MainApp extends Component {
             data={row}
             key={index}
             contentTypeList={this.props.contentTypeList}
+            onPress={this.onPress}
           />)}
       </View>
     );

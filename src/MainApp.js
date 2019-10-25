@@ -1,12 +1,12 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import Board from'./board';
-import { Ionicons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 
 const color = ['red', 'blue', 'cornflowerBlue', 'black', 'grey', 'yellow', 'orange', 'green', 'brown'];
 
 function getContent(x) {
-	return <Ionicons name="md-checkmark-circle" size={32} color={color[x]} />;
+	return <AntDesign name="smile-circle" size={50} color={color[x]} />;
 }
 
 export default function MainApp() {
@@ -16,7 +16,7 @@ export default function MainApp() {
     for (let i = 0; i < row; i++) {
         board.push(new Array());
         for (let j = 0; j < col; j++) {
-            board[i].push({index: i*row + j, type: 0});
+            board[i].push({row: i, col: j, type: 0});
         }
     }
     
