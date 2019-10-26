@@ -7,14 +7,16 @@ export default class Row extends Component {
     this.state = {
 	  row: this.props.row,
 	  col: this.props.col,
+	  count: this.props.count,
       type: this.props.type
     }
   }
 
   componentWillReceiveProps = (nextProps) => {
-	  if(nextProps.type !== this.state.type) {
+	  if((nextProps.type !== this.state.type) || (nextProps.count !== this.state.count)) {
 		  this.setState({
-			  type: nextProps.type
+			  type: nextProps.type,
+			  count: nextProps.count
 		  })
 	  }
   }
@@ -26,7 +28,7 @@ export default class Row extends Component {
     return (
       <View style={styles.container} onPress={this.onClick}>
 		  <TouchableOpacity onPress={this.onClick}>
-			  {this.props.contentRenderer[this.state.type](<Text>2</Text>)}
+			  {this.props.contentRenderer[this.state.type](this.state)}
 		  </TouchableOpacity>
       </View>
     );

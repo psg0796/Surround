@@ -1,36 +1,39 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import Board from'./board';
-import { Container, Header, Content, Badge, Text, Icon } from 'native-base';
+import { Badge, Text } from 'native-base';
+import { MAX_ROW, MAX_COL} from './utility';
 
-const type = ['red', 'blue', 'cornflowerBlue', 'black', 'grey', 'yellow', 'orange', 'green', 'brown'];
+const badgeColor = ['white', 'red', 'blue', 'green', 'orange', 'grey', 'brown'];
 
 function getContent(x) {
 	return (
-        (content) => <Badge>
-            {content}
-        </Badge>
+        (block) => {
+        return (<Badge style={{ backgroundColor: badgeColor[x] }}>
+            <Text>{block.count}</Text>
+        </Badge>);}
     );
 }
 
 export default function MainApp() {
-	const row = 4, col = 4;
 	const playerList = [0, 1, 2, 3, 4, 5, 6, 7, 8];
     let board = new Array();
-    for (let i = 0; i < row; i++) {
+    for (let i = 0; i < MAX_ROW; i++) {
         board.push(new Array());
-        for (let j = 0; j < col; j++) {
-            board[i].push({row: i, col: j, type: 0});
+        for (let j = 0; j < MAX_COL; j++) {
+            board[i].push({row: i, col: j, count: 0, type: 0});
         }
     }
     
     const contentRenderer = playerList.map(x => getContent(x));
+    const playerCount = 2;
 
     return (
         <View style={styles.container}>
             <Board
                 data={board}
                 contentRenderer={contentRenderer}
+                playerCount={playerCount}
             />
         </View>
     );

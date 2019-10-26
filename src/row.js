@@ -10,7 +10,8 @@ export default class Row extends Component {
 				row={block.row}
 				col={block.col}
                 key={index}
-                type={block.type}
+				type={block.type}
+				count={block.count}
                 contentRenderer={this.props.contentRenderer}
                 onPress={this.props.onPress}
             />)}
