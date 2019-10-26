@@ -26,7 +26,7 @@ export default class MainApp extends Component {
         {this.state.data.map((row,index) => <Row
             data={row}
             key={index}
-            contentTypeList={this.props.contentTypeList}
+            contentRenderer={this.props.contentRenderer}
             onPress={this.onPress}
           />)}
       </View>

@@ -26,7 +26,7 @@ export default class Row extends Component {
     return (
       <View style={styles.container} onPress={this.onClick}>
 		  <TouchableOpacity onPress={this.onClick}>
-			  {this.props.contentTypeList[this.state.type]}
+			  {this.props.contentRenderer[this.state.type](<Text>2</Text>)}
 		  </TouchableOpacity>
       </View>
     );

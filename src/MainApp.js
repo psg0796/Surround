@@ -1,12 +1,16 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import Board from'./board';
-import { AntDesign } from '@expo/vector-icons';
+import { Container, Header, Content, Badge, Text, Icon } from 'native-base';
 
-const color = ['red', 'blue', 'cornflowerBlue', 'black', 'grey', 'yellow', 'orange', 'green', 'brown'];
+const type = ['red', 'blue', 'cornflowerBlue', 'black', 'grey', 'yellow', 'orange', 'green', 'brown'];
 
 function getContent(x) {
-	return <AntDesign name="smile-circle" size={50} color={color[x]} />;
+	return (
+        (content) => <Badge>
+            {content}
+        </Badge>
+    );
 }
 
 export default function MainApp() {
@@ -20,13 +24,13 @@ export default function MainApp() {
         }
     }
     
-    const contentTypeList = playerList.map(x => getContent(x));
+    const contentRenderer = playerList.map(x => getContent(x));
 
     return (
         <View style={styles.container}>
             <Board
                 data={board}
-                contentTypeList={contentTypeList}
+                contentRenderer={contentRenderer}
             />
         </View>
     );

@@ -11,7 +11,7 @@ export default class Row extends Component {
 				col={block.col}
                 key={index}
                 type={block.type}
-                contentTypeList={this.props.contentTypeList}
+                contentRenderer={this.props.contentRenderer}
                 onPress={this.props.onPress}
             />)}
         </View>
